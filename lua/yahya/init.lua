@@ -48,6 +48,7 @@ vim.keymap.set("n", "gr", vim.lsp.buf.references)
 vim.keymap.set("n", "<leader>f", "<cmd> Telescope find_files <CR>")
 vim.keymap.set("n", "<leader>g", "<cmd> Telescope live_grep <CR>")
 vim.keymap.set("n", "<leader>b", "<cmd> NvimTreeToggle <CR>")
+vim.keymap.set({"n", "t"}, "<A-t>", "<cmd> ToggleTerm <CR>")
 
 vim.keymap.set("n", "<A-j>", "<cmd> BufferNext <CR>")
 vim.keymap.set("n", "<A-k>", "<cmd> BufferPrevious <CR>")
@@ -80,6 +81,7 @@ local plugins = {
     { "nvim-tree/nvim-tree.lua",          config = true },
     { "nvim-tree/nvim-web-devicons",      config = true },
     { "lewis6991/gitsigns.nvim" },
+    { 'akinsho/toggleterm.nvim',          version = "*", config = true },
     {
         "romgrk/barbar.nvim",
         opts = {
