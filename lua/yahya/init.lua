@@ -48,7 +48,7 @@ vim.keymap.set("n", "gr", vim.lsp.buf.references)
 vim.keymap.set("n", "<leader>f", "<cmd> Telescope find_files <CR>")
 vim.keymap.set("n", "<leader>g", "<cmd> Telescope live_grep <CR>")
 vim.keymap.set("n", "<leader>b", "<cmd> NvimTreeToggle <CR>")
-vim.keymap.set({"n", "t"}, "<A-t>", "<cmd> ToggleTerm <CR>")
+vim.keymap.set({"n", "t"}, "<A-t>", "<cmd> ToggleTerm direction=horizontal <CR>")
 
 vim.keymap.set("n", "<A-j>", "<cmd> BufferNext <CR>")
 vim.keymap.set("n", "<A-k>", "<cmd> BufferPrevious <CR>")
