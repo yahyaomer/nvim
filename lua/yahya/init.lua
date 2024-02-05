@@ -53,6 +53,8 @@ vim.keymap.set("n", "<leader>b", "<cmd> NvimTreeToggle <CR>")
 vim.keymap.set({ "n", "t" }, "<A-t>", "<cmd> ToggleTerm direction=horizontal <CR>")
 vim.keymap.set("n", "<A-d>", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>")
 vim.keymap.set("v", "<A-d>", "\"dy:%sno/<C-r>d//gI<Left><Left><Left>")
+vim.keymap.set("v", "/", "\"dy/<C-r>d<CR>")
+vim.keymap.set("v", "?", "\"dy/<C-r>d\\c<CR>")
 
 vim.keymap.set("n", "<A-j>", "<cmd> BufferNext <CR>")
 vim.keymap.set("n", "<A-k>", "<cmd> BufferPrevious <CR>")
