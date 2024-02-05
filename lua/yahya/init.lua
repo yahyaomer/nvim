@@ -28,6 +28,8 @@ vim.keymap.set("n", "<leader>q", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
@@ -48,7 +50,7 @@ vim.keymap.set("n", "gr", vim.lsp.buf.references)
 vim.keymap.set("n", "<leader>f", "<cmd> Telescope find_files <CR>")
 vim.keymap.set("n", "<leader>g", "<cmd> Telescope live_grep <CR>")
 vim.keymap.set("n", "<leader>b", "<cmd> NvimTreeToggle <CR>")
-vim.keymap.set({"n", "t"}, "<A-t>", "<cmd> ToggleTerm direction=horizontal <CR>")
+vim.keymap.set({ "n", "t" }, "<A-t>", "<cmd> ToggleTerm direction=horizontal <CR>")
 vim.keymap.set("n", "<A-d>", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>")
 vim.keymap.set("v", "<A-d>", "\"dy:%sno/<C-r>d//gI<Left><Left><Left>")
 
@@ -88,9 +90,6 @@ local plugins = {
         "romgrk/barbar.nvim",
         opts = {
             animation = false,
-            sidebar_filetypes = {
-                NvimTree = true,
-            },
         },
     },
     { "navarasu/onedark.nvim", opts = { style = "darker" } },
