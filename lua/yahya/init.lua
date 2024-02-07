@@ -81,7 +81,6 @@ vim.keymap.set("n", "<A-0>", "<cmd> BufferLast <CR>")
 
 -- plugins
 local plugins = {
-    { "nvim-treesitter/nvim-treesitter",    config = true },
     { "williamboman/mason.nvim",            config = true },
     { "williamboman/mason-lspconfig.nvim" },
     { "hrsh7th/cmp-buffer" },
@@ -144,6 +143,14 @@ local plugins = {
                 }
             }
         end,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require 'nvim-treesitter.configs'.setup({
+                ensure_installed = "all",
+            })
+        end
     },
     {
         "neovim/nvim-lspconfig",
