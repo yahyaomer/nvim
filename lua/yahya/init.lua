@@ -160,6 +160,7 @@ local plugins = {
             lspconfig["clangd"].setup({});
             lspconfig["tsserver"].setup({});
             lspconfig["eslint"].setup({});
+            lspconfig["jsonls"].setup({});
             lspconfig["lua_ls"].setup({
                 settings = {
                     Lua = {
