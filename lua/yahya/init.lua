@@ -156,11 +156,12 @@ local plugins = {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lspconfig = require("lspconfig");
-            lspconfig["clangd"].setup({});
-            lspconfig["tsserver"].setup({});
-            lspconfig["eslint"].setup({});
-            lspconfig["jsonls"].setup({});
+            local lspconfig = require("lspconfig")
+            lspconfig["clangd"].setup({})
+            lspconfig["tsserver"].setup({})
+            lspconfig["eslint"].setup({})
+            lspconfig["cmake"].setup({})
+            lspconfig["jsonls"].setup({})
             lspconfig["lua_ls"].setup({
                 settings = {
                     Lua = {
@@ -171,7 +172,7 @@ local plugins = {
                         },
                     },
                 },
-            });
+            })
         end,
     },
 }
