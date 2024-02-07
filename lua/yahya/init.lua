@@ -81,8 +81,8 @@ vim.keymap.set("n", "<A-0>", "<cmd> BufferLast <CR>")
 
 -- plugins
 local plugins = {
-    { "nvim-treesitter/nvim-treesitter",  config = true },
-    { "williamboman/mason.nvim",          config = true },
+    { "nvim-treesitter/nvim-treesitter",    config = true },
+    { "williamboman/mason.nvim",            config = true },
     { "williamboman/mason-lspconfig.nvim" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
@@ -92,11 +92,12 @@ local plugins = {
     { "hrsh7th/cmp-nvim-lsp-signature-help" },
     { "L3MON4D3/LuaSnip" },
     { "rafamadriz/friendly-snippets" },
-    { "nvim-tree/nvim-tree.lua",          config = true },
-    { "nvim-tree/nvim-web-devicons",      config = true },
+    { "nvim-tree/nvim-tree.lua",            config = true },
+    { "nvim-tree/nvim-web-devicons",        config = true },
     { "lewis6991/gitsigns.nvim" },
+    { "nvim-lualine/lualine.nvim",          config = true },
     { "sindrets/diffview.nvim" },
-    { 'akinsho/toggleterm.nvim',          version = "*", config = true },
+    { 'akinsho/toggleterm.nvim',            version = "*", config = true },
     {
         "romgrk/barbar.nvim",
         opts = {
@@ -149,6 +150,8 @@ local plugins = {
         config = function()
             local lspconfig = require("lspconfig");
             lspconfig["clangd"].setup({});
+            lspconfig["tsserver"].setup({});
+            lspconfig["eslint"].setup({});
             lspconfig["lua_ls"].setup({
                 settings = {
                     Lua = {
