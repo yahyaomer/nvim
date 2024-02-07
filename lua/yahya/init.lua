@@ -55,6 +55,8 @@ vim.keymap.set("n", "gr", vim.lsp.buf.references)
 vim.keymap.set("n", "<leader>f", "<cmd> Telescope find_files <CR>")
 vim.keymap.set("n", "<leader>g", "<cmd> Telescope live_grep <CR>")
 vim.keymap.set("n", "<leader>b", "<cmd> NvimTreeToggle <CR>")
+vim.keymap.set("n", "<A-g>", "<cmd> DiffviewOpen <CR>")
+vim.keymap.set("n", "<A-G>", "<cmd> DiffviewClose <CR>")
 vim.keymap.set({ "n", "t" }, "<A-t>", "<cmd> ToggleTerm direction=horizontal <CR>")
 vim.keymap.set("n", "<A-d>", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>")
 vim.keymap.set("v", "<A-d>", "\"dy:%sno/<C-r>d//gI<Left><Left><Left>")
@@ -87,11 +89,13 @@ local plugins = {
     { "saadparwaiz1/cmp_luasnip" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-nvim-lua" },
+    { "hrsh7th/cmp-nvim-lsp-signature-help" },
     { "L3MON4D3/LuaSnip" },
     { "rafamadriz/friendly-snippets" },
     { "nvim-tree/nvim-tree.lua",          config = true },
     { "nvim-tree/nvim-web-devicons",      config = true },
     { "lewis6991/gitsigns.nvim" },
+    { "sindrets/diffview.nvim" },
     { 'akinsho/toggleterm.nvim',          version = "*", config = true },
     {
         "romgrk/barbar.nvim",
@@ -123,6 +127,7 @@ local plugins = {
                     { name = "buffer" },
                     { name = "nvim_lua" },
                     { name = "path" },
+                    { name = "nvim_lsp_signature_help" },
                 },
                 mapping = {
                     ["<C-j>"] = cmp.mapping.select_next_item(),
