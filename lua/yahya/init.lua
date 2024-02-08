@@ -53,16 +53,19 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
 vim.keymap.set("n", "gr", vim.lsp.buf.references)
 
+vim.keymap.set("n", "<A-d>", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>")
+vim.keymap.set("v", "<A-d>", "\"dy:%sno/<C-r>d//gI<Left><Left><Left>")
+vim.keymap.set("v", "/", "\"dy/<C-r>d<CR>")
+vim.keymap.set("v", "?", "\"dy/<C-r>d\\c<CR>")
+
 vim.keymap.set("n", "<leader>f", "<cmd> Telescope find_files <CR>")
 vim.keymap.set("n", "<leader>g", "<cmd> Telescope live_grep <CR>")
 vim.keymap.set("n", "<leader>b", "<cmd> NvimTreeToggle <CR>")
 vim.keymap.set("n", "<A-g>", "<cmd> DiffviewOpen <CR>")
 vim.keymap.set("n", "<A-G>", "<cmd> DiffviewClose <CR>")
 vim.keymap.set({ "n", "t" }, "<A-t>", "<cmd> ToggleTerm direction=horizontal <CR>")
-vim.keymap.set("n", "<A-d>", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>")
-vim.keymap.set("v", "<A-d>", "\"dy:%sno/<C-r>d//gI<Left><Left><Left>")
-vim.keymap.set("v", "/", "\"dy/<C-r>d<CR>")
-vim.keymap.set("v", "?", "\"dy/<C-r>d\\c<CR>")
+vim.keymap.set("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)")
+vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
 
 vim.keymap.set("n", "<A-j>", "<cmd> BufferNext <CR>")
 vim.keymap.set("n", "<A-k>", "<cmd> BufferPrevious <CR>")
@@ -94,17 +97,21 @@ local plugins = {
     { "rafamadriz/friendly-snippets" },
     { "nvim-tree/nvim-tree.lua",            config = true },
     { "nvim-tree/nvim-web-devicons",        config = true },
-    { "lewis6991/gitsigns.nvim" },
+    { "lewis6991/gitsigns.nvim",            config = true },
     { "nvim-lualine/lualine.nvim",          config = true },
     { "sindrets/diffview.nvim" },
-    { "akinsho/toggleterm.nvim",            version = "*", config = true },
+    {
+        "numToStr/Comment.nvim",
+        opts = { mappings = false },
+    },
+    { "akinsho/toggleterm.nvim", version = "*",              config = true },
     {
         "romgrk/barbar.nvim",
         opts = {
             animation = false,
         },
     },
-    { "navarasu/onedark.nvim", opts = { style = "darker" } },
+    { "navarasu/onedark.nvim",   opts = { style = "darker" } },
     {
         "nvim-telescope/telescope.nvim",
         config = true,
