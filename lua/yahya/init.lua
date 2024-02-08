@@ -41,9 +41,10 @@ vim.keymap.set("n", "<A-i>", "<C-w>+")
 vim.keymap.set("n", "<A-o>", "<C-w>-")
 vim.keymap.set("n", "<A-p>", "<C-w>>")
 
-vim.keymap.set("x", "<leader>p", '"_dP')
+vim.keymap.set("x", "<A-p>p", "\"_dP")
 
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
+vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y")
+vim.keymap.set({ "n", "v" }, "<leader>p", "\"+p")
 
 vim.keymap.set("n", "<leader>F", vim.lsp.buf.format)
 
@@ -96,7 +97,7 @@ local plugins = {
     { "lewis6991/gitsigns.nvim" },
     { "nvim-lualine/lualine.nvim",          config = true },
     { "sindrets/diffview.nvim" },
-    { 'akinsho/toggleterm.nvim',            version = "*", config = true },
+    { "akinsho/toggleterm.nvim",            version = "*", config = true },
     {
         "romgrk/barbar.nvim",
         opts = {
@@ -147,7 +148,7 @@ local plugins = {
     {
         "nvim-treesitter/nvim-treesitter",
         config = function()
-            require 'nvim-treesitter.configs'.setup({
+            require "nvim-treesitter.configs".setup({
                 ensure_installed = "all",
                 highlight = { enable = true },
             })
