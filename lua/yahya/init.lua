@@ -24,7 +24,7 @@ vim.o.undolevels = 0xFFFF
 -- remaps
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>q", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv")
@@ -60,10 +60,11 @@ vim.keymap.set("v", "?", "\"dy/<C-r>d\\c<CR>")
 
 vim.keymap.set("n", "<leader>f", "<cmd> Telescope find_files <CR>")
 vim.keymap.set("n", "<leader>g", "<cmd> Telescope live_grep <CR>")
-vim.keymap.set("n", "<leader>b", "<cmd> NvimTreeToggle <CR>")
+vim.keymap.set("n", "<A-b>", "<cmd> NvimTreeToggle <CR>")
 vim.keymap.set("n", "<A-g>", "<cmd> DiffviewOpen <CR>")
 vim.keymap.set("n", "<A-G>", "<cmd> DiffviewClose <CR>")
 vim.keymap.set({ "n", "t" }, "<A-t>", "<cmd> ToggleTerm direction=horizontal <CR>")
+vim.keymap.set("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<cr>]], {})
 vim.keymap.set("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)")
 vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
 
@@ -110,6 +111,11 @@ local plugins = {
         opts = {
             animation = false,
         },
+    },
+    {
+        "folke/persistence.nvim",
+        event = "BufReadPre",
+        config = true,
     },
     { "navarasu/onedark.nvim",   opts = { style = "darker" } },
     {
