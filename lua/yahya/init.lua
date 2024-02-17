@@ -41,7 +41,9 @@ vim.keymap.set("n", "<A-i>", "<C-w>+")
 vim.keymap.set("n", "<A-o>", "<C-w>-")
 vim.keymap.set("n", "<A-p>", "<C-w>>")
 
-vim.keymap.set("x", "<A-p>p", "\"_dP")
+vim.keymap.set("v", "<A-p>", "\"_dP")
+
+vim.keymap.set("t", "<A-Esc>", "<C-\\><C-n>")
 
 vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y")
 vim.keymap.set({ "n", "v" }, "<leader>p", "\"+p")
@@ -63,9 +65,9 @@ vim.keymap.set("n", "<leader>g", "<cmd> Telescope live_grep <CR>")
 vim.keymap.set("n", "<A-b>", "<cmd> NvimTreeToggle <CR>")
 vim.keymap.set("n", "<A-g>", "<cmd> DiffviewOpen <CR>")
 vim.keymap.set("n", "<A-G>", "<cmd> DiffviewClose <CR>")
-vim.keymap.set({ "n", "t" }, "<A-t>", "<cmd> ToggleTerm direction=horizontal <CR>")
-vim.keymap.set("n", "<leader>ql", "<cmd>lua require(\"persistence\").load({ last = true })<CR>", {})
-vim.keymap.set("n", "<leader>qs", "<cmd>lua require(\"persistence\").load()<CR>", {})
+vim.keymap.set({ "n", "t" }, "<A-m>", function() require("toggleterm").toggle(vim.v.count) end)
+vim.keymap.set("n", "<leader>ql", function() require("persistence").load({ last = true }) end)
+vim.keymap.set("n", "<leader>qs", function() require("persistence").load() end)
 vim.keymap.set("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)")
 vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
 
