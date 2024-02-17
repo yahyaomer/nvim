@@ -57,8 +57,8 @@ vim.keymap.set('n', 'K', vim.lsp.buf.hover)
 
 vim.keymap.set("n", "<A-d>", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>")
 vim.keymap.set("v", "<A-d>", "\"dy:%sno/<C-r>d//gI<Left><Left><Left>")
-vim.keymap.set("v", "/", "\"dy/<C-r>d<CR>")
-vim.keymap.set("v", "?", "\"dy/<C-r>d\\c<CR>")
+vim.keymap.set("v", "/", "\"dy/\\V<C-r>d<CR>")
+vim.keymap.set("v", "?", "\"dy/\\V<C-r>d\\c<CR>")
 
 vim.keymap.set("n", "<leader>f", "<cmd> Telescope find_files <CR>")
 vim.keymap.set("n", "<leader>g", "<cmd> Telescope live_grep <CR>")
