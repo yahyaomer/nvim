@@ -53,7 +53,7 @@ vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
 vim.keymap.set("n", "gr", vim.lsp.buf.references)
-vim.keymap.set('n', 'K', vim.lsp.buf.hover)
+vim.keymap.set("n", "K", vim.lsp.buf.hover)
 
 vim.keymap.set("n", "<A-d>", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>")
 vim.keymap.set("v", "<A-d>", "\"dy:%sno/<C-r>d//gI<Left><Left><Left>")
@@ -179,6 +179,18 @@ local plugins = {
             lspconfig["eslint"].setup({})
             lspconfig["cmake"].setup({})
             lspconfig["jsonls"].setup({})
+            lspconfig["pylsp"].setup({
+                settings = {
+                    pylsp = {
+                        plugins = {
+                            pycodestyle = {
+                                ignore = { "W391" },
+                                maxLineLength = 120,
+                            }
+                        }
+                    }
+                }
+            })
             lspconfig["lua_ls"].setup({
                 settings = {
                     Lua = {
