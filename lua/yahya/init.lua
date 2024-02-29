@@ -106,6 +106,11 @@ local plugins = {
     { "nvim-lualine/lualine.nvim",          config = true },
     { "sindrets/diffview.nvim" },
     {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {},
+    },
+    {
         "numToStr/Comment.nvim",
         opts = { mappings = false },
     },
@@ -184,10 +189,13 @@ local plugins = {
                 settings = {
                     pylsp = {
                         plugins = {
+                            jedi = {
+                                environment = "/usr/bin/python3",
+                            },
                             pycodestyle = {
                                 ignore = { "W391" },
                                 maxLineLength = 120,
-                            }
+                            },
                         }
                     }
                 }
