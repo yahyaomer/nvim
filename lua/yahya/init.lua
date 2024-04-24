@@ -103,6 +103,7 @@ local plugins = {
     { "lewis6991/gitsigns.nvim",            config = true },
     { "nvim-lualine/lualine.nvim",          config = true },
     { "sindrets/diffview.nvim" },
+    { "mg979/vim-visual-multi" },
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
