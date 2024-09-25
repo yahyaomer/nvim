@@ -180,7 +180,7 @@ local plugins = {
         config = function()
             local lspconfig = require("lspconfig")
             lspconfig["clangd"].setup({})
-            lspconfig["tsserver"].setup({})
+            lspconfig["ts_ls"].setup({})
             lspconfig["eslint"].setup({})
             lspconfig["cmake"].setup({})
             lspconfig["jsonls"].setup({})
