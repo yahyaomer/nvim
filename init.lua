@@ -108,6 +108,7 @@ local plugins = {
     { "nvim-lualine/lualine.nvim",          config = true },
     { "sindrets/diffview.nvim" },
     { "mg979/vim-visual-multi" },
+    { "nvim-treesitter/nvim-treesitter-context" },
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
