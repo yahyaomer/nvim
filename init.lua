@@ -130,7 +130,7 @@ local plugins = {
         event = "BufReadPre",
         config = true,
     },
-    { "navarasu/onedark.nvim",   opts = { style = "darker" } },
+    { "navarasu/onedark.nvim",   opts = { style = "deep" } },
     {
         "nvim-telescope/telescope.nvim",
         config = true,
