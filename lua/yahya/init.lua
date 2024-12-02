@@ -39,6 +39,9 @@ vim.keymap.set("n", "<A-i>", "<C-w>+")
 vim.keymap.set("n", "<A-o>", "<C-w>-")
 vim.keymap.set("n", "<A-p>", "<C-w>>")
 
+vim.keymap.set("n", "<A-r>", ":cnext<CR>")
+vim.keymap.set("n", "<A-e>", ":cprev<CR>")
+
 vim.keymap.set("v", "<A-p>", "\"_dP")
 
 vim.keymap.set("t", "<A-Esc>", "<C-\\><C-n>")
@@ -184,6 +187,7 @@ local plugins = {
             lspconfig["eslint"].setup({})
             lspconfig["cmake"].setup({})
             lspconfig["jsonls"].setup({})
+            lspconfig["html"].setup({})
             lspconfig["pylsp"].setup({
                 settings = {
                     pylsp = {
