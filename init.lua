@@ -1,5 +1,5 @@
 -- settings
-vim.opt.nu = true
+vim.opt.number = true
 vim.opt.relativenumber = false
 
 vim.opt.tabstop = 4
@@ -24,62 +24,56 @@ vim.o.undolevels = 0xFFFF
 -- remaps
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv")
+vim.keymap.set("v", "J", "<cmd> m '>+1<CR>gv")
+vim.keymap.set("v", "K", "<cmd> m '<-2<CR>gv")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
+vim.keymap.set("n", "<A-n>", "nzz")
+vim.keymap.set("n", "<A-N>", "Nzz")
+
 vim.keymap.set("n", "<A-u>", "<C-w><")
 vim.keymap.set("n", "<A-i>", "<C-w>+")
 vim.keymap.set("n", "<A-o>", "<C-w>-")
 vim.keymap.set("n", "<A-p>", "<C-w>>")
 
-vim.keymap.set("n", "<A-r>", ":cnext<CR>")
-vim.keymap.set("n", "<A-e>", ":cprev<CR>")
+vim.keymap.set("n", "<A-r>", "<cmd> cnext<CR>")
+vim.keymap.set("n", "<A-e>", "<cmd> cprev<CR>")
+vim.keymap.set("n", "<A-R>", "<cmd> copen<CR>")
+vim.keymap.set("n", "<A-E>", "<cmd> cclose<CR>")
 
-vim.keymap.set("v", "<A-p>", "\"_dP")
-
-vim.keymap.set("t", "<A-Esc>", "<C-\\><C-n>")
-
-vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y")
-vim.keymap.set({ "n", "v" }, "<leader>p", "\"+p")
+vim.keymap.set({ "n", "v" }, "<C- >", "\"_")
+vim.keymap.set({ "n", "v" }, "<leader><leader>", "\"+")
 
 vim.keymap.set("n", "<leader>F", vim.lsp.buf.format)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
-vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
-vim.keymap.set("n", "gr", vim.lsp.buf.references)
-vim.keymap.set("n", "ge", vim.lsp.buf.rename)
-vim.keymap.set("n", "gf", vim.lsp.buf.code_action)
+vim.keymap.set("n", "gri", vim.lsp.buf.implementation)
+vim.keymap.set("n", "grr", vim.lsp.buf.references)
+vim.keymap.set("n", "grn", vim.lsp.buf.rename)
+vim.keymap.set("n", "gra", vim.lsp.buf.code_action)
 vim.keymap.set("n", "gk", vim.diagnostic.open_float)
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
 
-vim.keymap.set("n", "<A-d>", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>")
-vim.keymap.set("v", "<A-d>", "\"dy:%sno/<C-r>d//gI<Left><Left><Left>")
-vim.keymap.set("v", "/", "\"dy/\\V<C-r>d<CR>")
-vim.keymap.set("v", "?", "\"dy/\\V<C-r>d\\c<CR>")
-
 vim.keymap.set("n", "<leader>f", "<cmd> Telescope find_files <CR>")
 vim.keymap.set("n", "<leader>g", "<cmd> Telescope live_grep <CR>")
+
 vim.keymap.set("n", "<A-b>", "<cmd> NvimTreeToggle <CR>")
+
 vim.keymap.set("n", "<A-g>", "<cmd> DiffviewOpen <CR>")
 vim.keymap.set("n", "<A-G>", "<cmd> DiffviewClose <CR>")
+
 vim.keymap.set({ "n", "t" }, "<A-m>", function() require("toggleterm").toggle(vim.v.count) end)
-vim.keymap.set("n", "<leader>ql", function() require("persistence").load({ last = true }) end)
-vim.keymap.set("n", "<leader>qs", function() require("persistence").load() end)
-vim.keymap.set("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)")
-vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
 
 vim.keymap.set("n", "<A-j>", "<cmd> BufferPrevious <CR>")
 vim.keymap.set("n", "<A-k>", "<cmd> BufferNext <CR>")
 vim.keymap.set("n", "<A-J>", "<cmd> BufferMovePrevious <CR>")
 vim.keymap.set("n", "<A-K>", "<cmd> BufferMoveNext <CR>")
 vim.keymap.set("n", "<A-w>", "<cmd> BufferClose <CR>")
+vim.keymap.set("n", "<A-W>", "<cmd> BufferClose! <CR>")
 vim.keymap.set("n", "<A-1>", "<cmd> BufferGoto 1 <CR>")
 vim.keymap.set("n", "<A-2>", "<cmd> BufferGoto 2 <CR>")
 vim.keymap.set("n", "<A-3>", "<cmd> BufferGoto 3 <CR>")
@@ -93,69 +87,37 @@ vim.keymap.set("n", "<A-0>", "<cmd> BufferLast <CR>")
 
 -- plugins
 local plugins = {
-    { "williamboman/mason.nvim",            config = true },
-    { "williamboman/mason-lspconfig.nvim" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "saadparwaiz1/cmp_luasnip" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-nvim-lua" },
-    { "hrsh7th/cmp-nvim-lsp-signature-help" },
-    { "L3MON4D3/LuaSnip" },
-    { "rafamadriz/friendly-snippets" },
-    { "nvim-tree/nvim-tree.lua",            config = true },
-    { "nvim-tree/nvim-web-devicons",        config = true },
-    { "lewis6991/gitsigns.nvim",            config = true },
-    { "nvim-lualine/lualine.nvim",          config = true },
-    { "sindrets/diffview.nvim" },
+    { "navarasu/onedark.nvim", opts = { style = "deep" } },
+    { "folke/tokyonight.nvim", opts = {} },
+
+    { "nvim-telescope/telescope.nvim", opts = {}, dependencies = { "nvim-lua/plenary.nvim" } },
+    { "nvim-tree/nvim-tree.lua", opts = {} },
+    { "nvim-tree/nvim-web-devicons", opts = {} },
+    { "romgrk/barbar.nvim", opts = { animation = false } },
+    { "nvim-lualine/lualine.nvim", opts = {} },
+    { "akinsho/toggleterm.nvim", version = "*", opts = {} },
+
+    { "mason-org/mason.nvim", opts = {} },
+    { "mason-org/mason-lspconfig.nvim", opts = {} },
+
+    { "nvim-treesitter/nvim-treesitter", opts = {} },
+    { "nvim-treesitter/nvim-treesitter-context", opts = {} },
+
+    { "sindrets/diffview.nvim", opts = {} },
+    { "lewis6991/gitsigns.nvim", opts = {} },
+
     { "mg979/vim-visual-multi" },
-    { "nvim-treesitter/nvim-treesitter-context" },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {},
-    },
-    {
-        "numToStr/Comment.nvim",
-        opts = { mappings = false },
-    },
-    { "akinsho/toggleterm.nvim", version = "*",              config = true },
-    {
-        "romgrk/barbar.nvim",
-        opts = {
-            animation = false,
-        },
-    },
-    {
-        "folke/persistence.nvim",
-        event = "BufReadPre",
-        config = true,
-    },
-    { "navarasu/onedark.nvim",   opts = { style = "deep" } },
-    {
-        "nvim-telescope/telescope.nvim",
-        config = true,
-        dependencies = {
-            "nvim-lua/plenary.nvim"
-        },
-    },
+
     {
         "hrsh7th/nvim-cmp",
         opts = function()
             local cmp = require("cmp")
             return {
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end,
-                },
                 sources = {
                     { name = "nvim_lsp" },
-                    { name = "luasnip" },
-                    { name = "buffer" },
-                    { name = "nvim_lua" },
-                    { name = "path" },
                     { name = "nvim_lsp_signature_help" },
+                    { name = "buffer" },
+                    { name = "path" },
                 },
                 mapping = {
                     ["<C-j>"] = cmp.mapping.select_next_item(),
@@ -171,26 +133,23 @@ local plugins = {
                 }
             }
         end,
-    },
-    {
-        "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require "nvim-treesitter.configs".setup({
-                highlight = { enable = true },
-            })
-        end
+        dependencies = {
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/cmp-nvim-lsp-signature-help" },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+        },
     },
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lspconfig = require("lspconfig")
-            lspconfig["clangd"].setup({})
-            lspconfig["ts_ls"].setup({})
-            lspconfig["eslint"].setup({})
-            lspconfig["cmake"].setup({})
-            lspconfig["jsonls"].setup({})
-            lspconfig["html"].setup({})
-            lspconfig["pylsp"].setup({
+            vim.lsp.config("clangd", {})
+            vim.lsp.config("ts_ls", {})
+            vim.lsp.config("eslint", {})
+            vim.lsp.config("cmake", {})
+            vim.lsp.config("jsonls", {})
+            vim.lsp.config("html", {})
+            vim.lsp.config("pylsp", {
                 settings = {
                     pylsp = {
                         plugins = {
@@ -205,9 +164,15 @@ local plugins = {
                     }
                 }
             })
-            lspconfig["lua_ls"].setup({
+            vim.lsp.config("lua_ls", {
                 settings = {
                     Lua = {
+                        format = {
+                            enable = true,
+                            defaultConfig = {
+                                align_array_table = "false",
+                            },
+                        },
                         diagnostics = {
                             globals = {
                                 "vim",
@@ -234,4 +199,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(plugins, {})
 
-vim.cmd.colorscheme("onedark")
+vim.cmd.colorscheme("tokyonight-night")
