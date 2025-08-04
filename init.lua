@@ -200,4 +200,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(plugins, {})
 
 vim.cmd.colorscheme("onedark")
+
 vim.o.guifont = "JetBrainsMonoNL NF:h11"
+vim.keymap.set("n", "<C-->", function () vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1 end)
+vim.keymap.set("n", "<C-=>", function () vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1 end)
