@@ -204,3 +204,4 @@ vim.cmd.colorscheme("onedark")
 vim.o.guifont = "JetBrainsMonoNL NF:h11"
 vim.keymap.set("n", "<C-->", function () vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1 end)
 vim.keymap.set("n", "<C-=>", function () vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1 end)
+vim.keymap.set("n", "<C-0>", function () vim.g.neovide_scale_factor = 1.0 end)
