@@ -24,8 +24,8 @@ vim.o.undolevels = 0xFFFF
 -- remaps
 vim.g.mapleader = " "
 
-vim.keymap.set("v", "J", "<cmd> m '>+1<CR>gv")
-vim.keymap.set("v", "K", "<cmd> m '<-2<CR>gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
