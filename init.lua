@@ -149,6 +149,7 @@ local plugins = {
             vim.lsp.config("cmake", {})
             vim.lsp.config("jsonls", {})
             vim.lsp.config("html", {})
+            vim.lsp.config("gopls", {})
             vim.lsp.config("pylsp", {
                 settings = {
                     pylsp = {
