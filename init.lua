@@ -100,7 +100,17 @@ local plugins = {
     { "mason-org/mason.nvim", opts = {} },
     { "mason-org/mason-lspconfig.nvim", opts = {} },
 
-    { "nvim-treesitter/nvim-treesitter", opts = {} },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        lazy = false,
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                indent = { enable = true },
+                highlight = { enable = true },
+                folds = { enable = true },
+            })
+        end,
+    },
     { "nvim-treesitter/nvim-treesitter-context", opts = {} },
 
     { "sindrets/diffview.nvim", opts = {} },
