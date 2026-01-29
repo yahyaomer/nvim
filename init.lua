@@ -103,6 +103,7 @@ local plugins = {
 
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "master",
         lazy = false,
         config = function()
             require("nvim-treesitter.configs").setup({
