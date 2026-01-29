@@ -40,8 +40,8 @@ vim.keymap.set("n", "<A-i>", "<C-w>+")
 vim.keymap.set("n", "<A-o>", "<C-w>-")
 vim.keymap.set("n", "<A-p>", "<C-w>>")
 
-vim.keymap.set("n", "<A-r>", "<cmd> cnext<CR>")
-vim.keymap.set("n", "<A-e>", "<cmd> cprev<CR>")
+vim.keymap.set("n", "<A-r>", "<cmd> cnext<CR>zz")
+vim.keymap.set("n", "<A-e>", "<cmd> cprev<CR>zz")
 vim.keymap.set("n", "<A-R>", "<cmd> copen<CR>")
 vim.keymap.set("n", "<A-E>", "<cmd> cclose<CR>")
 
@@ -117,6 +117,7 @@ local plugins = {
     { "lewis6991/gitsigns.nvim", opts = {} },
 
     { "mg979/vim-visual-multi" },
+    { "github/copilot.vim" },
 
     {
         "hrsh7th/nvim-cmp",
@@ -212,8 +213,14 @@ require("lazy").setup(plugins, {})
 
 vim.cmd.colorscheme("onedark")
 
-vim.o.guifont = "JetBrainsMonoNL NF:h11"
+vim.o.guifont = "Agave Nerd Font Mono:h14"
 vim.g.neovide_opacity = 0.9
 vim.keymap.set("n", "<C-->", function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1 end)
 vim.keymap.set("n", "<C-=>", function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1 end)
 vim.keymap.set("n", "<C-0>", function() vim.g.neovide_scale_factor = 1.0 end)
+
+vim.keymap.set('i', '<C-l>', 'copilot#Accept("\\<CR>")', {
+    expr = true,
+    replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
