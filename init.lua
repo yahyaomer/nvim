@@ -42,6 +42,7 @@ vim.keymap.set(
     function()
         local w = vim.fn.expand("<cword>")
         vim.fn.setreg("/", "\\<" .. w .. "\\>")
+        vim.opt.hlsearch = true
     end,
     { noremap = true, silent = true }
 )
