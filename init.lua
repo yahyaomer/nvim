@@ -36,6 +36,16 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<A-n>", "nzz")
 vim.keymap.set("n", "<A-N>", "Nzz")
 
+vim.keymap.set(
+    "n",
+    "<A-h>",
+    function()
+        local w = vim.fn.expand("<cword>")
+        vim.fn.setreg("/", "\\<" .. w .. "\\>")
+    end,
+    { noremap = true, silent = true }
+)
+
 vim.keymap.set("n", "<A-u>", "<C-w><")
 vim.keymap.set("n", "<A-i>", "<C-w>+")
 vim.keymap.set("n", "<A-o>", "<C-w>-")
