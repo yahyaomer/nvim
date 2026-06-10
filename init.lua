@@ -114,15 +114,8 @@ local plugins = {
 
     {
         "nvim-treesitter/nvim-treesitter",
-        branch = "master",
+        branch = "main",
         lazy = false,
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                indent = { enable = true },
-                highlight = { enable = true },
-                folds = { enable = true },
-            })
-        end,
     },
     { "nvim-treesitter/nvim-treesitter-context", opts = {} },
 
