@@ -217,7 +217,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(plugins, {})
 
-vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("tokyonight-moon")
 
 vim.o.guifont = "Agave Nerd Font Mono:h14"
 vim.g.neovide_opacity = 0.9
