@@ -110,12 +110,27 @@ local plugins = {
     { "akinsho/toggleterm.nvim", version = "*", opts = {} },
 
     { "mason-org/mason.nvim", opts = {} },
-    { "mason-org/mason-lspconfig.nvim", opts = {} },
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {},
+        dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
+    },
 
     {
         "nvim-treesitter/nvim-treesitter",
         branch = "main",
         lazy = false,
+        build = ":TSUpdate",
+        config = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                group = vim.api.nvim_create_augroup("TreesitterHighlight", { clear = true }),
+                callback = function(event)
+                    if vim.treesitter.get_parser(event.buf) then
+                        vim.treesitter.start(event.buf)
+                    end
+                end,
+            })
+        end,
     },
     { "nvim-treesitter/nvim-treesitter-context", opts = {} },
 
@@ -159,7 +174,11 @@ local plugins = {
     },
     {
         "neovim/nvim-lspconfig",
+        dependencies = { "hrsh7th/cmp-nvim-lsp" },
         config = function()
+            vim.lsp.config("*", {
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            })
             vim.lsp.config("clangd", {})
             vim.lsp.config("ts_ls", {})
             vim.lsp.config("eslint", {})
@@ -199,12 +218,14 @@ local plugins = {
                     },
                 },
             })
+            -- ESLint is installed outside Mason.
+            vim.lsp.enable("eslint")
         end,
     },
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
