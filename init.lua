@@ -112,7 +112,20 @@ local plugins = {
     { "mason-org/mason.nvim", opts = {} },
     {
         "mason-org/mason-lspconfig.nvim",
-        opts = {},
+        opts = {
+            ensure_installed = {
+                "clangd",
+                "eslint",
+                "gopls",
+                "html",
+                "jsonls",
+                "lua_ls",
+                "pylsp",
+                "svlangserver",
+                "ts_ls",
+                "verible",
+            },
+        },
         dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
     },
 
@@ -138,7 +151,17 @@ local plugins = {
     { "lewis6991/gitsigns.nvim", opts = {} },
 
     { "mg979/vim-visual-multi" },
-    { "github/copilot.vim" },
+
+    {
+        "github/copilot.vim",
+        config = function()
+            vim.g.copilot_no_tab_map = true
+            vim.keymap.set("i", "<C-l>", 'copilot#Accept("<CR>")', {
+                expr = true,
+                replace_keycodes = false,
+            })
+        end,
+    },
 
     {
         "hrsh7th/nvim-cmp",
@@ -179,20 +202,15 @@ local plugins = {
             vim.lsp.config("*", {
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),
             })
-            vim.lsp.config("clangd", {})
-            vim.lsp.config("ts_ls", {})
-            vim.lsp.config("eslint", {})
-            vim.lsp.config("cmake", {})
-            vim.lsp.config("jsonls", {})
-            vim.lsp.config("html", {})
-            vim.lsp.config("gopls", {})
             vim.lsp.config("pylsp", {
                 settings = {
                     pylsp = {
                         plugins = {
                             jedi = {
-                                environment = "/usr/bin/python3",
+                                environment = vim.fn.exepath("python3"),
                             },
+                            yapf = { enabled = true },
+                            autopep8 = { enabled = false },
                             pycodestyle = {
                                 ignore = { "W391" },
                                 maxLineLength = 120,
@@ -218,8 +236,6 @@ local plugins = {
                     },
                 },
             })
-            -- ESLint is installed outside Mason.
-            vim.lsp.enable("eslint")
         end,
     },
 }
@@ -240,14 +256,10 @@ require("lazy").setup(plugins, {})
 
 vim.cmd.colorscheme("tokyonight-moon")
 
-vim.o.guifont = "Agave Nerd Font Mono:h14"
-vim.g.neovide_opacity = 0.9
-vim.keymap.set("n", "<C-->", function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1 end)
-vim.keymap.set("n", "<C-=>", function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1 end)
-vim.keymap.set("n", "<C-0>", function() vim.g.neovide_scale_factor = 1.0 end)
-
-vim.keymap.set('i', '<C-l>', 'copilot#Accept("\\<CR>")', {
-    expr = true,
-    replace_keycodes = false
-})
-vim.g.copilot_no_tab_map = true
+if vim.g.neovide then
+    vim.o.guifont = "Agave Nerd Font Mono:h14"
+    vim.g.neovide_opacity = 0.9
+    vim.keymap.set("n", "<C-->", function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1 end)
+    vim.keymap.set("n", "<C-=>", function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1 end)
+    vim.keymap.set("n", "<C-0>", function() vim.g.neovide_scale_factor = 1.0 end)
+end
