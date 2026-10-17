@@ -114,6 +114,7 @@ local plugins = {
         "mason-org/mason-lspconfig.nvim",
         opts = {
             ensure_installed = {
+                "bashls",
                 "clangd",
                 "eslint",
                 "gopls",
