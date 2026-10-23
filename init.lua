@@ -122,6 +122,7 @@ local plugins = {
                 "jsonls",
                 "lua_ls",
                 "pylsp",
+                "rust_analyzer",
                 "svlangserver",
                 "ts_ls",
                 "verible",
